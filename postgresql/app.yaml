@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/maheshgowdamg/postgres-gitops.git
+    repoURL: https://github.com/maheshgowdamg/postgres-gitops1.git
     targetRevision: master
     path: postgresql
     helm:
