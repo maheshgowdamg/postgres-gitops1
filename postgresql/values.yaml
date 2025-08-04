@@ -18,8 +18,8 @@ global:
 primary:
   persistence:
     size: 4Gi
-  resourcesPreset: medium
-  storageClass: local-path 
+    storageClass: local-path
+  resourcesPreset: medium 
   extendedConfiguration: |
     max_connections = 3001
     shared_preload_libraries = 'pg_stat_statements'
@@ -37,8 +37,8 @@ readReplicas:
   replicaCount: 2
   persistence:
     size: 4Gi
+    storageClass: local-path
   resourcesPreset: medium
-  storageClass: local-path 
   extendedConfiguration: |
     max_connections = 3001
     shared_preload_libraries = 'pg_stat_statements'
