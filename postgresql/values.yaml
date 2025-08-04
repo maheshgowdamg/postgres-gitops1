@@ -9,7 +9,7 @@ metrics:
   enabled: true
 
 global:
-  storageClass: local-path (default)
+  storageClass: local-path
   postgresql:
     auth:
       database: postgres
