@@ -2,8 +2,8 @@ architecture: replication
 
 replication:
   enabled: true
-  synchronousCommit: "on"
-  numSynchronousReplicas: 1
+  synchronousCommit: "off"
+  numSynchronousReplicas: 0
 
 metrics:
   enabled: true
