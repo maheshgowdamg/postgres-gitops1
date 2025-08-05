@@ -17,7 +17,7 @@ global:
 
 primary:
   persistence:
-    size: 4Gi
+    size: 2Gi
   resourcesPreset: medium 
   extendedConfiguration: |
     max_connections = 3001
@@ -33,9 +33,9 @@ primary:
     log_statement = 'all'
 
 readReplicas:
-  replicaCount: 3
+  replicaCount: 2
   persistence:
-    size: 4Gi
+    size: 2Gi
   resourcesPreset: medium
   extendedConfiguration: |
     max_connections = 3001
