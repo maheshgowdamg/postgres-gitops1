@@ -1,52 +1,53 @@
-architecture: replication
+postgresql:
+  architecture: replication
 
-replication:
-  enabled: true
-  synchronousCommit: "off"
-  numSynchronousReplicas: 0
+  global:
+    postgresql:
+      auth:
+        existingSecret: postgresql
+        database: postgres
+    storageClass: hostpath
 
-metrics:
-  enabled: true
+  metrics:
+    enabled: true
 
-global:
-  storageClass: hostpath
-  postgresql:
-    auth:
-      database: postgres
-      existingSecret: postgresql
+  primary:
+    extendedConfiguration: |
+      max_connections = 3001
+      shared_preload_libraries = 'pg_stat_statements'
+      pg_stat_statements.track = all
+      log_destination = 'stderr'
+      logging_collector = on
+      log_directory = '/bitnami/postgresql/logs'
+      log_filename = 'postgresql.log'
+      log_connections = off
+      log_disconnections = off
+      log_min_duration_statement = 1000
+      log_statement = 'all'
+    persistence:
+      size: 2Gi
+    resourcesPreset: medium
 
-primary:
-  persistence:
-    size: 2Gi
-  resourcesPreset: medium 
-  extendedConfiguration: |
-    max_connections = 3001
-    shared_preload_libraries = 'pg_stat_statements'
-    pg_stat_statements.track = all
-    log_destination = 'stderr'
-    logging_collector = on
-    log_directory = '/bitnami/postgresql/logs'
-    log_filename = 'postgresql.log'
-    log_connections = off
-    log_disconnections = off
-    log_min_duration_statement = 1000
-    log_statement = 'all'
+  readReplicas:
+    replicaCount: 2
+    extendedConfiguration: |
+      max_connections = 3001
+      shared_preload_libraries = 'pg_stat_statements'
+      pg_stat_statements.track = all
+      log_destination = 'stderr'
+      logging_collector = on
+      log_directory = '/bitnami/postgresql/logs'
+      log_filename = 'postgresql.log'
+      log_connections = off
+      log_disconnections = off
+      log_min_duration_statement = 1000
+      log_statement = 'all'
+    persistence:
+      size: 2Gi
+    resourcesPreset: medium
 
-readReplicas:
-  replicaCount: 2
-  persistence:
-    size: 2Gi
-  resourcesPreset: medium
-  extendedConfiguration: |
-    max_connections = 3001
-    shared_preload_libraries = 'pg_stat_statements'
-    pg_stat_statements.track = all
-    log_destination = 'stderr'
-    logging_collector = on
-    log_directory = '/bitnami/postgresql/logs'
-    log_filename = 'postgresql.log'
-    log_connections = off
-    log_disconnections = off
-    log_min_duration_statement = 1000
-    log_statement = 'all'
+  replication:
+    enabled: true
+    numSynchronousReplicas: 0
+    synchronousCommit: off
 
