@@ -1,0 +1,29 @@
+mongodb:
+  global:
+    storageClass: hostpath
+
+  architecture: replicaset
+  replicaCount: 3
+  replicaSetName: rs0
+  useStatefulSet: true
+
+  auth:
+    enabled: true
+    existingSecret: mongo
+
+  arbiter:
+    enabled: false
+
+  metrics:
+    enabled: true
+    resources:
+      requests:
+        memory: 100Mi
+      limits:
+        memory: 200Mi
+
+  persistence:
+    size: 4Gi
+
+  resourcesPreset: xlarge
+
