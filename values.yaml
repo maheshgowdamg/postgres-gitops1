@@ -49,5 +49,5 @@ postgresql:
   replication:
     enabled: true
     numSynchronousReplicas: 0
-    synchronousCommit: off
+    synchronousCommit: "off"
 
