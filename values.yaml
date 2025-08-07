@@ -29,7 +29,7 @@ postgresql:
     resourcesPreset: medium
 
   readReplicas:
-    replicaCount: 1
+    replicaCount: 2
     extendedConfiguration: |
       max_connections = 3001
       shared_preload_libraries = 'pg_stat_statements'
