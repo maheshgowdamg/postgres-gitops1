@@ -12,7 +12,7 @@ spec:
     targetRevision: master
     helm:
       valueFiles:
-        - values.yaml
+        - postgres-values.yaml
   sources: []
   project: default
   syncPolicy:
