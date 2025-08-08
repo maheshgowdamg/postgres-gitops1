@@ -8,7 +8,7 @@ spec:
     namespace: dev
     server: https://kubernetes.default.svc
   source:
-    path: .
+    path: mongodb
     repoURL: https://github.com/maheshgowdamg/postgres-gitops1.git
     targetRevision: master
     helm:
